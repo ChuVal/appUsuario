@@ -22,8 +22,8 @@ const RouterComponent = () => {
                 <Scene key="root" hideNavBar>
                     <Scene key="homepage" component={LandingPage} />
                     <Scene key="choices" component={ChoicesPage} />
-                    <Scene key="tours" component={Exhibitions} hideNavBar={false} title={'CAFAM Exhibitions'} 
-                            navigationBarStyle={{ backgroundColor: '#F4A93F' }} 
+                    <Scene key="tours" component={Exhibitions} hideNavBar={false} title={'Nombre de exhibición'} 
+                            navigationBarStyle={{ backgroundColor: '#0066cc' }} 
                             backTitle=" "/>
                     <Scene key="generalInfo" component={GeneralInfo} hideNavBar={false} title={'General Information'} 
                             navigationBarStyle={{ backgroundColor: '#F4A93F' }} 

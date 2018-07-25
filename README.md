@@ -1,6 +1,6 @@
-# Craft_and_Folk_Art_Museum_Mobile_App
+# Posifi_app
 
-This project is being developed to serve as an alterntaive to booking tours with the Craft and Folk Art Museum directly. Eunice Lee, the museum's Public Programs Coordinator, and I worked together to come up with the design of this self-guided tour app. The application will let visitors listen to pre-recorded audio of the exhibitions on each floor of the musuem. The app also lets users know about any upcoming programs, general information regarding the museum and a way to purchase from the museums store. 
+<!-- This project is being developed to serve as an alterntaive to booking tours with the Craft and Folk Art Museum directly. Eunice Lee, the museum's Public Programs Coordinator, and I worked together to come up with the design of this self-guided tour app. The application will let visitors listen to pre-recorded audio of the exhibitions on each floor of the musuem. The app also lets users know about any upcoming programs, general information regarding the museum and a way to purchase from the museums store. 
 
 As of right now, May 31st 2018. The app can run on both iOS and Android devices (tested on live devices). I need to work on a few other things, mainly testing, caching of images for faster runtime and download speeds. 
 
@@ -43,4 +43,4 @@ react-native run-android
 
 
 ### Authors
-+ [Alex Edward Ball](https://github.com/AlexEBall)
++ [Alex Edward Ball](https://github.com/AlexEBall) -->

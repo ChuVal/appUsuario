@@ -9,17 +9,17 @@ export default class LandingPage extends Component {
     render() {
         return (
             <ImageBackground
-                source={require('../assets/img/craftnfolkart.jpg')}
+                source={require('../assets/img/mnav.jpg')}
                 style={styles.backgroundImage}>
                 <View style={styles.container}>
                     <View style={styles.title}>
-                        <View style={styles.titleBox}>
+                        {/* <View style={styles.titleBox}>
                             <Text style={styles.h1}>Craft & Folk Art Museum</Text>
-                        </View>
+                        </View> */}
                     </View>
                     <View style={styles.enter}>
                         <TouchableOpacity style={styles.enterBtn} onPress={this.onGuestPress.bind(this)}>
-                            <Text style={styles.enterText}>Continue</Text>
+                            <Text style={styles.enterText}>Continuar</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -66,11 +66,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#f4a93f'
+        backgroundColor: '#fff'
     },
     enterText: {
         fontSize: 24,
         fontWeight: '700',
-        color: 'white'
+        color: 'black'
     }
 });

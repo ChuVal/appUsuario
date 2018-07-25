@@ -23,23 +23,23 @@ export default class ChoicesPage extends Component {
 
     render() {
         return (
-            <LinearGradient colors={['#f4a93f','#f08433']} style={styles.LinearGradient}>
+            <LinearGradient colors={['#fff','#d9d9d9']} style={styles.LinearGradient}>
                 <View style={styles.textBoxContainer}>
-                    <Image source={require('../assets/img/logo-white.png')} />
+                    <Image source={require('../assets/img/mnav2.png')} />
                 </View>
                 <View style={styles.buttonsContainer}>
                     <TouchableOpacity style={styles.buttonStyle} onPress={this.onExhibitionsPress.bind(this)}>
-                            <Text style={styles.textStyle}>Exhibitions</Text>
+                            <Text style={styles.textStyle}>Exhibición</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonStyle1} onPress={this.onGeneralInfoPress.bind(this)}>
-                            <Text style={styles.textStyle}>General Info</Text>
+                            <Text style={styles.textStyle}>Información General</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonStyle2} onPress={this.onProgramsPress.bind(this)}>
-                            <Text style={styles.textStyle}>Programs</Text>
+                            <Text style={styles.textStyle}>Programas</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonStyle3} onPress={this.onShopPress.bind(this)}>
+                    {/* <TouchableOpacity style={styles.buttonStyle3} onPress={this.onShopPress.bind(this)}>
                             <Text style={styles.textStyle}>Shop</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             </LinearGradient>
         );
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f08433',
+        backgroundColor: '#e62e00',
         marginBottom: 20
     },
     buttonStyle1: {
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f9d24e',
+        backgroundColor: '#ffff1a',
         marginBottom: 20
     },
     buttonStyle2: {
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#009FB7',
+        backgroundColor: '#0066cc',
         marginBottom: 20
     },
     buttonStyle3: {
