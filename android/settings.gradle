@@ -1,4 +1,12 @@
 rootProject.name = 'posifi'
+include ':react-native-sound'
+project(':react-native-sound').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sound/android')
+include ':react-native-audio-toolkit'
+project(':react-native-audio-toolkit').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-audio-toolkit/android')
+include ':react-native-audio-streamer'
+project(':react-native-audio-streamer').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-audio-streamer/android')
+include ':react-native-android-wifi'
+project(':react-native-android-wifi').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-android-wifi/android')
 include ':react-native-fetch-blob'
 project(':react-native-fetch-blob').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fetch-blob/android')
 include ':react-native-linear-gradient'
@@ -7,11 +15,11 @@ include ':react-native-svg'
 project(':react-native-svg').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-svg/android')
 include ':react-native-play-audio'
 project(':react-native-play-audio').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-play-audio/android')
-// include ':react-native-sound'
-// project(':react-native-sound').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sound/android')
-// include ':react-native-audio-streamer'
-// project(':react-native-audio-streamer').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-audio-streamer/android')
-// include ':react-native-audio-toolkit'
-// project(':react-native-audio-toolkit').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-audio-toolkit/android/lib')
+include ':react-native-sound'
+project(':react-native-sound').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sound/android')
+include ':react-native-audio-streamer'
+project(':react-native-audio-streamer').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-audio-streamer/android')
+include ':react-native-audio-toolkit'
+project(':react-native-audio-toolkit').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-audio-toolkit/android/lib')
 
 include ':app'

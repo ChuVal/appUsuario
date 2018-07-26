@@ -6,6 +6,7 @@ export default class LandingPage extends Component {
     onGuestPress() {
         Actions.choices();
     }
+   
     render() {
         return (
             <ImageBackground
