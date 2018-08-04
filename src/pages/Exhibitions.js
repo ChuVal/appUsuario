@@ -8,7 +8,8 @@ import wifi from "react-native-android-wifi";
 
 class Exhibitions extends Component {
   componentWillMount = () => {
-    this.props.fetchTourData();
+    // this.props.fetchTourData();
+    this.props.fetchPredictions();
   };
   getWifiNetworksOnPress() {
     wifi.loadWifiList(

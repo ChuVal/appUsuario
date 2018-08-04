@@ -1,16 +1,15 @@
-import axios from "axios";
+import { API } from "react-native-dotenv";
 
 export const fetchPredictions = () => {
   return dispatch => {
     dispatch({ type: `FETCHING_PRREDICTIONS_START` });
-    axios
-      .get("https://cloud.internalpositioning.com/api/v1/location/posifi/nuevo")
+    fetch( API + "/api/v1/location/posifi/nuevo")
       .then(res => {
-        // console.log(res.analysis.guesses);
+        res.json().then(data => console.log(data.analysis.guesses, API));
         dispatch({ type: `RECIEVE_PREDICTIONS`, payload: res.data });
       })
       .catch(err => {
-        dispatch({ type: FETCHING_PROGRAMS_ERROR, payload: err });
+        dispatch({ type: `FETCHING_PREDICTIONS_ERROR`, payload: err });
       });
   };
 };
