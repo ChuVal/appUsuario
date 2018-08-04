@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchTourData } from "../actions";
+import { fetchTourData, fetchPredictions } from "../actions";
 import {
   View,
   StyleSheet,
@@ -91,5 +91,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchTourData }
+  { fetchTourData, fetchPredictions }
 )(Exhibitions);
