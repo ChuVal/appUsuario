@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchTourData, fetchPredictions } from "../actions";
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Text
-} from "react-native";
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import TourBox from "../components/TourBox";
 import Spinner from "../components/Spinner";
 import wifi from "react-native-android-wifi";
@@ -41,9 +35,7 @@ class Exhibitions extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.toursContainer}>
-          <ScrollView>{this.renderTourBox()}</ScrollView>
-        </View>
+        <View style={styles.toursContainer}>{this.renderTourBox()}</View>
         <View>
           <TouchableOpacity
             style={styles.enterBtn}
@@ -64,6 +56,7 @@ const styles = StyleSheet.create({
   },
   toursContainer: {
     flex: 1,
+    alignSelf: "stretch",
     backgroundColor: "#ffffff"
   },
   enterBtn: {
