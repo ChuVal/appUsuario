@@ -1,25 +1,39 @@
 import { API } from "react-native-dotenv";
-
+import wifi from "react-native-android-wifi";
+import { SEND_WIFI_ERROR, SEND_WIFI_SUCCESS, SEND_WIFI_START } from "./types";
 export const sendWifiSignals = () => {
   return dispatch => {
-    dispatch({ type: `FETCHING_PRREDICTIONS_START` });
-    fetch(API + "/data", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
+    dispatch({ type: SEND_WIFI_START });
+    var wifiList = [];
+    wifi.loadWifiList(
+      wifiStringList => {
+        wifiList = [].concat(JSON.parse(wifiStringList));
+        var lis = wifiList.reduce((previous, item) => {
+          previous[item.BSSID] = item.level;
+          return previous;
+        }, {});
+        fetch(API + "/data", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            s: { wifi: lis },
+            d: "nuevo",
+            f: "posifi"
+          })
+        })
+          .then(res => {
+            dispatch({ type: SEND_WIFI_SUCCESS });
+          })
+          .catch(err => {
+            dispatch({ type: SEND_WIFI_ERROR, payload: err });
+          });
       },
-      body: JSON.stringify({
-        firstParam: "yourValue",
-        secondParam: "yourOtherValue"
-      })
-    })
-      .then(res => {
-        res.json().then(data => console.log(data.analysis.guesses));
-        dispatch({ type: `RECIEVE_PREDICTIONS`, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({ type: `FETCHING_PREDICTIONS_ERROR`, payload: err });
-      });
+      error => {
+        console.log(error);
+      }
+    );
   };
 };

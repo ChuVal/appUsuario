@@ -17,7 +17,7 @@ export default class TourBoxHeader extends Component {
             <View style={styles.tourBoxHeader}>
                 <View style={styles.tourBoxHeaderTitle}>
                     <Text style={styles.tourBoxHeaderTitleText}>
-                        {this.props.title} Tour
+                        {this.props.title}
                     </Text>
                 </View>
             </View>

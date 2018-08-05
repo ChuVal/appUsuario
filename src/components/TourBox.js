@@ -12,14 +12,12 @@ import Tour from "../components/Tour";
 
 export default class TourBox extends Component {
   renderTour = () => {
-    // return this.props.tour.floors.map(selectedTour =>
     return (
       <Tour
         key={this.props.tour.floors[0].floor}
         selectedTour={this.props.tour.floors[0]}
       />
     );
-    // );
   };
 
   render() {

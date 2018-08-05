@@ -22,14 +22,14 @@ const RouterComponent = () => {
                 <Scene key="root" hideNavBar>
                     <Scene key="homepage" component={LandingPage} />
                     <Scene key="choices" component={ChoicesPage} />
-                    <Scene key="tours" component={Exhibitions} hideNavBar={false} title={'Nombre de exhibición'} 
-                            navigationBarStyle={{ backgroundColor: '#e62e00' }} 
+                    <Scene key="tours" component={Exhibitions} hideNavBar={false} title={'Exhibicion'} 
+                            navigationBarStyle={{ backgroundColor: '#B33D3B' }} 
                             backTitle=" "/>
-                    <Scene key="generalInfo" component={GeneralInfo} hideNavBar={false} title={'General Information'} 
-                            navigationBarStyle={{ backgroundColor: '#F4A93F' }} 
+                    <Scene key="generalInfo" component={GeneralInfo} hideNavBar={false} title={'Informacion General'} 
+                            navigationBarStyle={{ backgroundColor: '#dfc12a' }} 
                             backTitle=" " />
-                    <Scene key="programs" component={Programs} hideNavBar={false} title={'Upcoming Programs'} 
-                            navigationBarStyle={{ backgroundColor: '#F4A93F' }} 
+                    <Scene key="programs" component={Programs} hideNavBar={false} title={'Siguientes Programas'} 
+                            navigationBarStyle={{ backgroundColor: '#3B7FB3' }} 
                             backTitle=" " />
                     <Scene key="tour" component={Tour} hideNavBar={false} title={'CAFAM Tour'} 
                             navigationBarStyle={{ backgroundColor: '#F4A93F' }}/>

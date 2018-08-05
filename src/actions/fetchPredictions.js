@@ -1,15 +1,23 @@
 import { API } from "react-native-dotenv";
-
+import {
+  FETCH_PREDICTIONS_START,
+  FETCH_PREDICTIONS_ERROR,
+  FETCH_PREDICTIONS_SUCCESS
+} from "./types";
 export const fetchPredictions = () => {
   return dispatch => {
-    dispatch({ type: `FETCHING_PRREDICTIONS_START` });
-    fetch( API + "/api/v1/location/posifi/nuevo")
+    dispatch({ type: FETCH_PREDICTIONS_START });
+    fetch(API + "/api/v1/location/posifi/nuevo")
       .then(res => {
-        res.json().then(data => console.log(data.analysis.guesses, API));
-        dispatch({ type: `RECIEVE_PREDICTIONS`, payload: res.data });
+        res.json().then(data =>
+          dispatch({
+            type: FETCH_PREDICTIONS_SUCCESS,
+            payload: data.analysis.guesses
+          })
+        );
       })
       .catch(err => {
-        dispatch({ type: `FETCHING_PREDICTIONS_ERROR`, payload: err });
+        dispatch({ type: FETCH_PREDICTIONS_ERROR, payload: err });
       });
   };
 };
