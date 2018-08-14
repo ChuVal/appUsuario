@@ -3,7 +3,7 @@
 
 This project is being developed to serve as platform for internal positioning at the Museo Nacional de Artes Visuales(MNAV). 
 
-Toghether with the MNAV, three engeenering studenst from Facultad de Ingenieria UdelaR have made this app as a proyect for their final thesis. The application will let visitors know where they are in any momment inside the museum and listen to pre-recorded audio of the exhibitions on each floor of the musuem. The app also lets users know about any upcoming programs and general information regarding the museum.
+Together with the MNAV, three engineering students from Facultad de Ingenieria UdelaR have made this app as a project for their final thesis. The application will let visitors know where they are in any moment inside the museum and listen to pre-recorded audio of the exhibitions on each floor of the museum. The app also lets users know about any upcoming programs and general information regarding the museum.
 
 ## Instructions
 If you have [React-Native](https://facebook.github.io/react-native/) and [Node.js](https://nodejs.org/en/) installed. 
