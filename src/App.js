@@ -5,7 +5,6 @@ import { YellowBox } from "react-native";
 import configureStore from "./configureStore.js";
 import configureReactotron from "./ReactotronConfig";
 import { PermissionsAndroid } from "react-native";
-import wifi from "react-native-android-wifi";
 
 YellowBox.ignoreWarnings(["Warning: isMounted(...) is deprecated"]);
 
