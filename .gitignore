@@ -34,4 +34,3 @@ yarn.lock
 */fastlane/Preview.html
 */fastlane/screenshots
 .env
-package-lock.json

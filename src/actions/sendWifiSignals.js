@@ -5,7 +5,7 @@ export const sendWifiSignals = () => {
   return dispatch => {
     dispatch({ type: SEND_WIFI_START });
     var wifiList = [];
-    wifi.loadWifiList(
+    wifi.reScanAndLoadWifiList(
       wifiStringList => {
         wifiList = [].concat(JSON.parse(wifiStringList));
         var lis = wifiList.reduce((previous, item) => {

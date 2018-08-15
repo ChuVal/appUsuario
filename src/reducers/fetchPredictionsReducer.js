@@ -21,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         fetching: false,
         fetched: true,
-        predictions: action.payload
+        predictions: action.payload || []
       };
     default:
       return state;

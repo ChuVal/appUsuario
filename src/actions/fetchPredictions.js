@@ -1,4 +1,4 @@
-import { API } from "react-native-dotenv";
+import { API  } from "react-native-dotenv";
 import {
   FETCH_PREDICTIONS_START,
   FETCH_PREDICTIONS_ERROR,
