@@ -1,7 +1,6 @@
 // Define all possible screens/scenes that a user can visit in our app
 import React from 'react';
-import {View} from 'react-native';
-import {Actions, Scene, Router, Lightbox} from 'react-native-router-flux';
+import { Scene, Router, Lightbox} from 'react-native-router-flux';
 import LandingPage from './pages/LandingPage';
 import ChoicesPage from './pages/ChoicesPage';
 import Exhibitions from './pages/Exhibitions';
