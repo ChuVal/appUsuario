@@ -1,4 +1,4 @@
-# Posifi_app
+# MNAVigator
 
 
 This project is being developed to serve as platform for internal positioning at the Museo Nacional de Artes Visuales(MNAV). 
