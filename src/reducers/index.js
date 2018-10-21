@@ -5,6 +5,7 @@ import fetchProgramReducer from "./fetchProgramReducer";
 import app from "./app";
 import fetchPredictionsReducer from "./fetchPredictionsReducer";
 import sendWifiSignalReducer from "./sendWifiSignalReducer";
+import fetchDatareducer from "./fetchDataReducer";
 
 export default combineReducers({
   data: fetchToursReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   programs: fetchProgramReducer,
   app: app,
   predictions: fetchPredictionsReducer,
-  wifi: sendWifiSignalReducer
+  wifi: sendWifiSignalReducer,
+  blind: fetchDatareducer
 });

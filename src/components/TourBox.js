@@ -12,12 +12,9 @@ import Tour from "../components/Tour";
 
 export default class TourBox extends Component {
   renderTour = () => {
-    return (
-      <Tour
-        key={this.props.tour.floors[0].floor}
-        selectedTour={this.props.tour.floors[0]}
-      />
-    );
+    return this.props.tour.floors.map(selectedTour => (
+      <Tour key={selectedTour.floor} selectedTour={selectedTour} />
+    ));
   };
 
   render() {
@@ -41,10 +38,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginRight: 5,
     marginLeft: 5,
-    height: 350
+    height: 560
   },
   tourBoxTours: {
     flex: 1,
+    height: 650,
     backgroundColor: "#ffffff",
     display: "flex",
     flexDirection: "row"

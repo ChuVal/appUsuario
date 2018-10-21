@@ -1,17 +1,46 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchTourData, fetchPredictions, sendWifiSignals } from "../actions";
-import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import {
+  fetchData,
+  fetchTourData,
+  fetchPredictions,
+  sendWifiSignals
+} from "../actions";
+import { View, StyleSheet } from "react-native";
 import TourBox from "../components/TourBox";
 import Spinner from "../components/Spinner";
 
 class Exhibitions extends Component {
-  componentWillMount = () => {
+  checkNearZone = () => {
     this.props.fetchTourData();
-  };
-  getWifiNetworksOnPress() {
+
     this.props.sendWifiSignals();
-    this.props.fetchPredictions();
+    var bestPrediction = this.props.fetchPredictions();
+
+    if (bestPrediction !== this.state.lastPrediction) {
+      this.props.fetchData();
+      this.setState({
+        lastPrediction: bestPrediction
+      });
+    }
+  };
+
+  componentWillMount() {
+    this.props.fetchTourData();
+    this.props.sendWifiSignals();
+    var bestPrediction = this.props.fetchPredictions();
+    this.setState({
+      lastPrediction: bestPrediction
+    });
+    var intervalId = setInterval(() => {
+      this.checkNearZone();
+    }, 20000);
+    this.setState({
+      intervalId
+    });
+  }
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId);
   }
 
   renderTourBox = () => {
@@ -30,15 +59,6 @@ class Exhibitions extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.toursContainer}>{this.renderTourBox()}</View>
-        <View>
-          <Text>{JSON.stringify(this.props.predictions)}</Text>
-          <TouchableOpacity
-            style={styles.enterBtn}
-            onPress={this.getWifiNetworksOnPress.bind(this)}
-          >
-            <Text style={styles.enterText}>Predecir</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     );
   }
@@ -80,5 +100,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchTourData, fetchPredictions, sendWifiSignals }
+  { fetchData, fetchTourData, fetchPredictions, sendWifiSignals }
 )(Exhibitions);

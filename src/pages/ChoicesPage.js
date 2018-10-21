@@ -20,7 +20,7 @@ export default class ChoicesPage extends Component {
   };
 
   onProgramsPress = () => {
-    Actions.programs();
+    Actions.blind();
   };
 
   render() {
@@ -49,7 +49,7 @@ export default class ChoicesPage extends Component {
             style={styles.buttonStyle2}
             onPress={this.onProgramsPress.bind(this)}
           >
-            <Text style={styles.textStyle}>Programas</Text>
+            <Text style={styles.textStyle}>Recorrido a ciegas</Text>
           </TouchableOpacity>
         </View>
       </LinearGradient>

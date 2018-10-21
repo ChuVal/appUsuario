@@ -2,14 +2,9 @@ import React, {Component} from 'react';
 import {
     Text,
     View,
-    Image,
     StyleSheet,
-    ScrollView,
-    TouchableOpacity,
-    ImageBackground
 } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
-
+ 
 export default class TourBoxHeader extends Component {
 
     render() {

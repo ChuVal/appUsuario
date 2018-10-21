@@ -14,9 +14,6 @@ export default class LandingPage extends Component {
                 style={styles.backgroundImage}>
                 <View style={styles.container}>
                     <View style={styles.title}>
-                        {/* <View style={styles.titleBox}>
-                            <Text style={styles.h1}>Craft & Folk Art Museum</Text>
-                        </View> */}
                     </View>
                     <View style={styles.enter}>
                         <TouchableOpacity style={styles.enterBtn} onPress={this.onGuestPress.bind(this)}>

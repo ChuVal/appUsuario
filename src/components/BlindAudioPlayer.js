@@ -48,7 +48,7 @@ class AudioPlayerComponent extends Component {
   };
 
   audioPlayPauseToggle = url => {
-    if (this.props.isPlaying === true && this.props.isPaused === false) {
+    if (this.props.isPlaying === true) {
       return (
         <TouchableOpacity
           style={styles.audioBtn}

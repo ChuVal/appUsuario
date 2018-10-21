@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import {
   Text,
   View,
-  Image,
   StyleSheet,
-  ScrollView,
   TouchableOpacity,
   ImageBackground
 } from "react-native";
@@ -81,7 +79,7 @@ export default class Tour extends Component {
             <View style={styles.push} />
             <View style={styles.tourInfoBox}>
               <Text style={styles.imgText}>
-                Floor {this.props.selectedTour.floor}
+                Floor qweq3d23d23d23d23 {this.props.selectedTour.floor}
               </Text>
               {this.renderButton()}
             </View>
@@ -94,7 +92,7 @@ export default class Tour extends Component {
 
 const styles = StyleSheet.create({
   tour: {
-    width: 340,
+    width: 290,
     backgroundColor: "#F08433",
     marginRight: 5,
     marginLeft: 5,
@@ -115,28 +113,31 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   tourInfoBox: {
-    flex: 0.3,
+    flex: 0.2,
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     backgroundColor: "rgba(255, 51, 51, .7)"
   },
   push: {
-    flex: 0.7
+    flex: 0.8
   },
   startBtn: {
     flex: 1,
     zIndex: 5,
     flexDirection: "row",
-    alignSelf: "center",
     justifyContent: "space-around",
     opacity: 1,
     backgroundColor: "#fff",
     borderRadius: 5,
     borderWidth: 1,
     borderColor: "#009FB7",
-    margin: 15,
-    padding: 5
+    marginBottom: 0,
+    padding: 5,
+    width: 150,
+    height: 5,
+    marginBottom: 5,
+    marginTop: 5
   },
   startBtnDisabled: {
     flex: 1,
@@ -150,9 +151,9 @@ const styles = StyleSheet.create({
     padding: 5
   },
   imgText: {
-    margin: 10,
+    margin: 0,
     color: "white",
-    fontSize: 24,
+    fontSize: 18,
     letterSpacing: 2,
     textShadowOffset: { width: 2, height: 2 },
     textShadowColor: "black",
