@@ -15,7 +15,10 @@ class Exhibitions extends Component {
     this.props.sendWifiSignals();
     var bestPrediction = this.props.fetchPredictions();
 
-    if (bestPrediction !== this.state.actualPrediction) {
+    if (
+      bestPrediction !== this.state.actualPrediction &&
+      bestPrediction !== null
+    ) {
       this.setState({
         actualPrediction: bestPrediction,
         count: 0

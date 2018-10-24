@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
-import { fetchData } from "../actions";
+import { Text, View, StyleSheet } from "react-native";
+import { fetchData, sendWifiSignals, fetchPredictions } from "../actions";
 import { connect } from "react-redux";
 import AudioPlayer from "react-native-play-audio";
 
@@ -15,7 +15,7 @@ class BlindPath extends Component {
         AudioPlayer.play();
       }
     );
-    setTimeout(this.blindTravel, 3000);
+    setTimeout(() => this.blindTravel, 3000);
   }
 
   componentWillUnmount() {
@@ -24,7 +24,7 @@ class BlindPath extends Component {
   }
 
   blindTravel = () => {
-    var location = this.getLocation();
+    var location = this.getBestLocation(0, "");
 
     if (this.location.findIndex(location.id) !== -1) {
       this.setState({
@@ -32,14 +32,22 @@ class BlindPath extends Component {
       });
       // Logica de mostrar los audios
     }
-    var id = setTimeout(this.blindTravel, 10000);
+    var id = setTimeout(() => this.blindTravel, 10000);
     this.setState({
       timeoutId: id
     });
   };
 
-  getLocation = () => {
+  getBestLocation = (count, pred) => {
     // Logica de obtener la ubicacion
+    this.sendWifiSignals();
+    var prediction = this.fetchPredictions();
+    if (pred !== prediction) {
+      count = 0;
+    }
+    return count === 3
+      ? pred
+      : setTimeout(() => this.getBestLocation(count++, prediction), 1500);
   };
 
   render() {
