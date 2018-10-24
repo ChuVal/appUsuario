@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { fetchData, sendWifiSignals, fetchPredictions } from "../actions";
+import { fetchData, sendWifiSignals, fetchPredictions, step } from "../actions";
 import { connect } from "react-redux";
 import AudioPlayer from "react-native-play-audio";
 
@@ -10,12 +10,14 @@ class BlindPath extends Component {
       locations: [1, 2, 3, 4, 5, 6, 7, 8]
     });
     AudioPlayer.prepare(
-      "https://s3-sa-east-1.amazonaws.com/posifi-app/Yamaha-V50-Synbass-1-C2.wav",
+      "https://s3-sa-east-1.amazonaws.com/posifi-app/firstInstruction.wav",
       () => {
         AudioPlayer.play();
       }
     );
-    setTimeout(() => this.blindTravel, 3000);
+    this.props.step("ACA");
+
+    setTimeout(() => this.blindTravel(), 4000);
   }
 
   componentWillUnmount() {
@@ -24,6 +26,13 @@ class BlindPath extends Component {
   }
 
   blindTravel = () => {
+    this.props.step("ACA TRAVEL");
+    AudioPlayer.prepare(
+      "https://s3-sa-east-1.amazonaws.com/posifi-app/otherInstruction.wav",
+      () => {
+        AudioPlayer.play();
+      }
+    );
     var location = this.getBestLocation(0, "");
 
     if (this.location.findIndex(location.id) !== -1) {
@@ -32,7 +41,7 @@ class BlindPath extends Component {
       });
       // Logica de mostrar los audios
     }
-    var id = setTimeout(() => this.blindTravel, 10000);
+    var id = setTimeout(() => this.blindTravel(), 10000);
     this.setState({
       timeoutId: id
     });
@@ -40,14 +49,12 @@ class BlindPath extends Component {
 
   getBestLocation = (count, pred) => {
     // Logica de obtener la ubicacion
-    this.sendWifiSignals();
-    var prediction = this.fetchPredictions();
+    this.props.sendWifiSignals();
+    var prediction = this.props.fetchPredictions();
     if (pred !== prediction) {
       count = 0;
     }
-    return count === 3
-      ? pred
-      : setTimeout(() => this.getBestLocation(count++, prediction), 1500);
+    return count === 3 ? pred : this.getBestLocation(count++, prediction);
   };
 
   render() {
@@ -85,5 +92,5 @@ var mapStateToProps = state => ({});
 
 export default connect(
   mapStateToProps,
-  { fetchData }
+  { fetchData, sendWifiSignals, fetchPredictions, step }
 )(BlindPath);

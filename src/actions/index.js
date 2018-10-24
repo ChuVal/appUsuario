@@ -4,3 +4,4 @@ export * from "./fetchPrograms";
 export * from "./fetchPredictions";
 export * from "./sendWifiSignals";
 export * from "./fetchData";
+export * from "./step";

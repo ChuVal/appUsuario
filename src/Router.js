@@ -5,8 +5,8 @@ import LandingPage from "./pages/LandingPage";
 import ChoicesPage from "./pages/ChoicesPage";
 import Exhibitions from "./pages/Exhibitions";
 import GeneralInfo from "./pages/GeneralInfo";
-import Tour from "./pages/Tour";
 import BlindPath from "./pages/BlindPath";
+import Exhibition from "./pages/Exhibition";
 
 const RouterComponent = () => {
   return (
@@ -46,7 +46,7 @@ const RouterComponent = () => {
           />
           <Scene
             key="tour"
-            component={Tour}
+            component={Exhibition}
             hideNavBar={false}
             title={"Tour de MNAV"}
             navigationBarStyle={{ backgroundColor: "#F4A93F" }}
