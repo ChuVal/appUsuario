@@ -6,6 +6,9 @@ import AudioPlayer from "react-native-play-audio";
 
 class BlindPath extends Component {
   componentDidMount() {
+    this.setState({
+      locations: [1, 2, 3, 4, 5, 6, 7, 8]
+    });
     AudioPlayer.prepare(
       "https://s3-sa-east-1.amazonaws.com/posifi-app/Yamaha-V50-Synbass-1-C2.wav",
       () => {
@@ -17,10 +20,26 @@ class BlindPath extends Component {
 
   componentWillUnmount() {
     AudioPlayer.stop();
+    clearTimeout(this.state.timeoutId);
   }
 
   blindTravel = () => {
-    console.log("Here hermano");
+    var location = this.getLocation();
+
+    if (this.location.findIndex(location.id) !== -1) {
+      this.setState({
+        locations: this.state.locations.filter(id => id !== location.id)
+      });
+      // Logica de mostrar los audios
+    }
+    var id = setTimeout(this.blindTravel, 10000);
+    this.setState({
+      timeoutId: id
+    });
+  };
+
+  getLocation = () => {
+    // Logica de obtener la ubicacion
   };
 
   render() {

@@ -12,8 +12,6 @@ import Spinner from "../components/Spinner";
 
 class Exhibitions extends Component {
   checkNearZone = () => {
-    this.props.fetchTourData();
-
     this.props.sendWifiSignals();
     var bestPrediction = this.props.fetchPredictions();
 
@@ -25,6 +23,10 @@ class Exhibitions extends Component {
     }
   };
 
+  changeView = () => {
+    
+  }
+
   componentWillMount() {
     this.props.fetchTourData();
     this.props.sendWifiSignals();
@@ -32,15 +34,25 @@ class Exhibitions extends Component {
     this.setState({
       lastPrediction: bestPrediction
     });
-    var intervalId = setInterval(() => {
+    setTimeout(() => {
       this.checkNearZone();
-    }, 20000);
+    }, 2000);
+
     this.setState({
-      intervalId
+      predictionIntervalId
+    });
+
+    var viewIntervalId = setInterval(() => {
+      this.changeView();
+    }, 2000);
+
+    this.setState({
+      viewIntervalId
     });
   }
   componentWillUnmount() {
-    clearInterval(this.state.intervalId);
+    clearInterval(this.state.predictionIntervalId);
+    clearInterval(this.state.viewIntervalId);
   }
 
   renderTourBox = () => {
