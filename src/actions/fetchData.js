@@ -1,4 +1,3 @@
-import AWS from "aws-sdk";
 import { DATA_API } from "react-native-dotenv";
 import {
   SEND_PARTIAL_INFO_SUCCES,
@@ -6,18 +5,18 @@ import {
   SEND_PARTIAL_INFO_REQUEST
 } from "./types";
 
-export const fetchData = () => dispatch => {
+export const fetchData = id => dispatch => {
   dispatch({ type: SEND_PARTIAL_INFO_REQUEST });
-  return fetch(DATA_API)
+  return fetch(DATA_API + `posifi_id/${id}`)
     .then(res => {
       res.json().then(data => {
-        // dispatch({
-        //   type: SEND_PARTIAL_INFO_SUCCES,
-        //   payload: data
-        // });
+        dispatch({
+          type: SEND_PARTIAL_INFO_SUCCES,
+          payload: data
+        });
       });
     })
     .catch(err => {
-      dispatch({ type: FETCH_PREDICTIONS_ERROR, payload: err });
+      dispatch({ type: SEND_PARTIAL_INFO_ERROR, payload: err });
     });
 };

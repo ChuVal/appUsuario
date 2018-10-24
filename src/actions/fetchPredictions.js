@@ -11,10 +11,9 @@ export const fetchPredictions = () => {
       .then(res => {
         res.json().then(data => {
           dispatch({
-            type: FETCH_PREDICTIONS_SUCCESS,
-            payload: data.analysis.guesses
+            type: FETCH_PREDICTIONS_SUCCESS
           });
-          return buildPredictions(data.analysis.guesses);
+          return selectBest(data.analysis.guesses);
         });
       })
       .catch(err => {
@@ -23,6 +22,6 @@ export const fetchPredictions = () => {
   };
 };
 
-var buildPredictions = data => {
-  return data;
+var selectBest = data => {
+  return data[0].probability > 0.5 ? data[0].location : null;
 };

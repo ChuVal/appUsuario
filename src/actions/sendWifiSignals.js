@@ -24,7 +24,7 @@ export const sendWifiSignals = () => {
             f: "posifi"
           })
         })
-          .then(res => {
+          .then(() => {
             dispatch({ type: SEND_WIFI_SUCCESS });
           })
           .catch(err => {

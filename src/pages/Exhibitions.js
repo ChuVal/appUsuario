@@ -15,26 +15,40 @@ class Exhibitions extends Component {
     this.props.sendWifiSignals();
     var bestPrediction = this.props.fetchPredictions();
 
-    if (bestPrediction !== this.state.lastPrediction) {
-      this.props.fetchData();
+    if (bestPrediction !== this.state.actualPrediction) {
       this.setState({
-        lastPrediction: bestPrediction
+        actualPrediction: bestPrediction,
+        count: 0
+      });
+    } else {
+      this.setState({
+        count: this.state.count++
       });
     }
   };
 
   changeView = () => {
-    
-  }
+    if (
+      this.state.lastPrediction !== this.state.actualPrediction &&
+      this.state.count > 3
+    ) {
+      this.setState({
+        lastPrediction: this.state.actualPrediction
+      });
+      this.fetchData(this.state.actualPrediction);
+    }
+  };
 
   componentWillMount() {
     this.props.fetchTourData();
     this.props.sendWifiSignals();
     var bestPrediction = this.props.fetchPredictions();
+    this.fetchData(bestPrediction);
     this.setState({
-      lastPrediction: bestPrediction
+      lastPrediction: bestPrediction,
+      actualPrediction: bestPrediction
     });
-    setTimeout(() => {
+    setInterval(() => {
       this.checkNearZone();
     }, 2000);
 
@@ -44,7 +58,7 @@ class Exhibitions extends Component {
 
     var viewIntervalId = setInterval(() => {
       this.changeView();
-    }, 2000);
+    }, 15000);
 
     this.setState({
       viewIntervalId
