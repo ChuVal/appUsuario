@@ -23,5 +23,5 @@ export const SEND_WIFI_SUCCESS = "send_wifi_success";
 export const SEND_WIFI_ERROR = "send_wifi_error";
 
 export const SEND_PARTIAL_INFO_REQUEST = "send_partial_info_request";
-export const SEND_PARTIAL_INFO_SUCCES = "send_partial_info_success";
+export const SEND_PARTIAL_INFO_SUCCESS = "send_partial_info_success";
 export const SEND_PARTIAL_INFO_ERROR = "send_partial_info_error";

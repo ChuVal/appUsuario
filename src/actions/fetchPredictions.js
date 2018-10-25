@@ -7,13 +7,13 @@ import {
 export const fetchPredictions = () => {
   return dispatch => {
     dispatch({ type: FETCH_PREDICTIONS_START });
-    return fetch(API + "/api/v1/location/posifi/nuevo")
+    return fetch(API + "/api/v1/location/posifi/moto")
       .then(res => {
         return res.json().then(data => {
           dispatch({
-            type: FETCH_PREDICTIONS_SUCCESS
+            type: FETCH_PREDICTIONS_SUCCESS,
+            payload: selectBest(data.analysis.guesses)
           });
-          return selectBest(data.analysis.guesses);
         });
       })
       .catch(err => {
@@ -23,23 +23,23 @@ export const fetchPredictions = () => {
 };
 
 var selectBest = data => {
-  return data[0].probability > 0.5 ? mapLocToTag[data[0].location] : null;
+  return data[0].probability > 0.3 ? mapLocToTag[data[0].location] : null;
 };
 
 var mapLocToTag = {
-  Uno: "location_1",
-  Dos: "location_2",
-  Tres: "location_3",
-  Cuatro: "location_4",
-  Cinco: "location_5",
-  Seis: "location_6",
-  Siete: "location_7",
-  Ocho: "location_8",
-  Nueve: "location_9",
-  Diez: "location_10",
-  Once: "location_11",
-  Doce: "location_12",
-  Tresce: "location_13",
-  Catorce: "location_14",
-  Quince: "location_15"
+  uno: "location_1",
+  dos: "location_2",
+  tres: "location_3",
+  cuatro: "location_4",
+  cinco: "location_5",
+  seis: "location_6",
+  siete: "location_7",
+  ocho: "location_8",
+  nueve: "location_9",
+  diez: "location_10",
+  once: "location_11",
+  doce: "location_12",
+  tresce: "location_13",
+  catorce: "location_14",
+  quince: "location_15"
 };

@@ -7,7 +7,7 @@ import {
 const INITIAL_STATE = {
   fetching: false,
   fetched: false,
-  predictions: [],
+  bestPrediction: "",
   error: null
 };
 export default (state = INITIAL_STATE, action) => {
@@ -21,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         fetching: false,
         fetched: true,
-        predictions: action.payload || []
+        bestPrediction: action.payload
       };
     default:
       return state;

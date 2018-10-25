@@ -20,7 +20,7 @@ export const sendWifiSignals = () => {
           },
           body: JSON.stringify({
             s: { wifi: lis },
-            d: "nuevo",
+            d: "moto",
             f: "posifi"
           })
         })
