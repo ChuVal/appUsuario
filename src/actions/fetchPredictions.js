@@ -9,7 +9,7 @@ export const fetchPredictions = () => {
     dispatch({ type: FETCH_PREDICTIONS_START });
     return fetch(API + "/api/v1/location/posifi/nuevo")
       .then(res => {
-        res.json().then(data => {
+        return res.json().then(data => {
           dispatch({
             type: FETCH_PREDICTIONS_SUCCESS
           });

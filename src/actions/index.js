@@ -5,3 +5,4 @@ export * from "./fetchPredictions";
 export * from "./sendWifiSignals";
 export * from "./fetchData";
 export * from "./step";
+export * from "./fetchAudioBlindPath";
