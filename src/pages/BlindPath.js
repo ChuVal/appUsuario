@@ -10,6 +10,12 @@ import { connect } from "react-redux";
 import AudioPlayer from "react-native-play-audio";
 
 class BlindPath extends Component {
+  componentWillMount() {
+    this.setState({
+      actualPrediction: "",
+      count: 0
+    });
+  }
   componentDidMount() {
     this.setState({
       locations: [
@@ -23,15 +29,15 @@ class BlindPath extends Component {
         "location_8"
       ]
     });
-    AudioPlayer.prepare(
-      "https://s3-sa-east-1.amazonaws.com/posifi-app/otherInstruction.wav",
-      () => {
-        AudioPlayer.play();
-      }
-    );
+    // AudioPlayer.prepare(
+    //   "https://s3-sa-east-1.amazonaws.com/posifi-app/otherInstruction.wav",
+    //   () => {
+    //     AudioPlayer.play();
+    //   }
+    // );
     this.props.step("Primeros pasos");
 
-    var timeoutId = setTimeout(() => this.firstInstrucction(), 9100);
+    var timeoutId = setTimeout(() => this.firstInstrucction(), 100);
     this.setState({ timeoutId });
   }
 
@@ -39,42 +45,49 @@ class BlindPath extends Component {
     AudioPlayer.stop();
     clearTimeout(this.state.timeoutId);
     clearTimeout(this.state.btimeoutId);
+    clearTimeout(this.state.playtimeoutId);
   }
 
   firstInstrucction = () => {
     this.props.step("First Instrucction");
-    AudioPlayer.prepare(
-      "https://s3-sa-east-1.amazonaws.com/posifi-app/firstInstruction.wav",
-      () => {
-        AudioPlayer.play();
-      }
-    );
-    var timeoutId = setTimeout(() => this.getBestLocation(), 13000); //Poner lo que dura el audio
+    // AudioPlayer.prepare(
+    //   "https://s3-sa-east-1.amazonaws.com/posifi-app/firstInstruction.wav",
+    //   () => {
+    //     AudioPlayer.play();
+    //   }
+    // );
+    var timeoutId = setTimeout(() => this.getBestLocation(), 200); //Poner lo que dura el audio
     this.setState({ timeoutId });
+  };
+
+  playAudio = () => {
+    AudioPlayer.prepare(this.props.data[0].audio_url, () => {
+      AudioPlayer.play();
+    });
   };
 
   displayAudio = () => {
     this.props.step("Displaying Audio");
     var id;
     if (
-      this.state.locations.findIndex(elem => elem === this.state.prediction) !==
-      -1
+      this.state.locations.findIndex(
+        elem => elem === this.state.actualPrediction
+      ) !== -1
     ) {
       this.setState({
         locations: this.state.locations.filter(
-          id => id !== this.state.prediction
+          id => id !== this.state.actualPrediction
         )
       });
-      // Logica de mostrar los audios
-      // FetchData, filter y mandarle cumbia
-      // var exhibition = this.fetchAudioBlindPath(this.state.prediction);
-      // AudioPlayer.prepare(
-      //   exhibition.audio_url,
-      //   () => {
-      //     AudioPlayer.play();
-      //   }
-      // );
-      id = setTimeout(() => this.getBestLocation(), 10000); // Esperar el tiempo necesario
+      this.props.step(this.state.actualPrediction);
+      this.props.fetchAudioBlindPath(this.state.actualPrediction);
+
+      id = setTimeout(() => this.playAudio(), 3000); // Esperar el tiempo necesario
+      this.setState({
+        playtimeoutId: id
+      });
+
+      id = setTimeout(() => this.getBestLocation(), 6000); // Esperar el tiempo necesario
       this.setState({
         timeoutId: id
       });
@@ -89,22 +102,22 @@ class BlindPath extends Component {
   getBestLocation = () => {
     this.props.step("Getting best");
     // Logica de obtener la ubicacion
-    //this.props.sendWifiSignals();
-    var prediction = "location_2"; // this.props.fetchPredictions();
-    if (this.state.prediction !== prediction) {
+    this.props.sendWifiSignals();
+    this.props.fetchPredictions();
+    if (this.state.actualPrediction !== this.props.bestPrediction) {
       this.setState({
-        prediction,
+        actualPrediction: this.props.bestPrediction,
         count: 0
       });
     } else {
       this.setState({
-        count: 3
+        count: this.state.count + 1
       });
     }
     if (this.state.count === 3) {
       this.displayAudio();
     } else {
-      var btimeoutId = setTimeout(() => this.getBestLocation(), 2000);
+      var btimeoutId = setTimeout(() => this.getBestLocation(), 500);
       this.setState({
         btimeoutId
       });
@@ -118,7 +131,7 @@ class BlindPath extends Component {
           {"Bienvenido al recorrido a ciegas!"}
         </Text>
         <Text style={styles.text2Style}>
-          {"Esta escuchando audio de iniciacion"}
+          {this.state.actualPrediction + "|" + this.state.count}
         </Text>
       </View>
     );
@@ -142,7 +155,10 @@ const styles = StyleSheet.create({
   }
 });
 
-var mapStateToProps = state => ({});
+var mapStateToProps = state => ({
+  data: state.data.info,
+  bestPrediction: state.predictions.bestPrediction
+});
 
 export default connect(
   mapStateToProps,

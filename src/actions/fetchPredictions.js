@@ -39,7 +39,7 @@ var mapLocToTag = {
   diez: "location_10",
   once: "location_11",
   doce: "location_12",
-  tresce: "location_13",
+  trece: "location_13",
   catorce: "location_14",
   quince: "location_15"
 };

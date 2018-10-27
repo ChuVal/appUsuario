@@ -7,7 +7,7 @@ import {
 
 export const fetchData = id => dispatch => {
   dispatch({ type: SEND_PARTIAL_INFO_REQUEST });
-  return fetch(DATA_API + `/posifi_id/${"location_5"}`)
+  return fetch(DATA_API + `/posifi_id/${id}`)
     .then(res => {
       return res.json().then(data => {
         dispatch({

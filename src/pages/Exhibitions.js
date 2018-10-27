@@ -35,7 +35,8 @@ class Exhibitions extends Component {
     this.props.step("Change view");
     if (
       this.state.lastPrediction !== this.state.actualPrediction &&
-      this.state.count > 3
+      this.state.count >= 5 &&
+      this.state.lastPrediction !== null
     ) {
       this.setState({
         lastPrediction: this.state.actualPrediction,
@@ -44,6 +45,10 @@ class Exhibitions extends Component {
       this.props.fetchData(this.state.actualPrediction);
     }
   };
+
+  initialization() {
+    this.props.step("Initialization");
+  }
 
   componentWillMount() {
     this.props.sendWifiSignals();
@@ -59,13 +64,13 @@ class Exhibitions extends Component {
     });
     var predictionIntervalId = setInterval(() => {
       this.checkNearZone();
-    }, 2000);
+    }, 250);
     this.setState({
       predictionIntervalId
     });
     var viewIntervalId = setInterval(() => {
       this.changeView();
-    }, 15000);
+    }, 5000);
     this.setState({
       viewIntervalId
     });
@@ -83,7 +88,12 @@ class Exhibitions extends Component {
       return <Spinner />;
     } else {
       // return ( tours.map(tour => <TourBox key={tour._id} tour={tour} />
-      return <ExhibitionsBox exhibitions={info} />;
+      return (
+        <ExhibitionsBox
+          exhibitions={info}
+          title={this.state.actualPrediction}
+        />
+      );
     }
   };
 
