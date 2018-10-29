@@ -29,12 +29,6 @@ class BlindPath extends Component {
         "location_8"
       ]
     });
-    // AudioPlayer.prepare(
-    //   "https://s3-sa-east-1.amazonaws.com/posifi-app/otherInstruction.wav",
-    //   () => {
-    //     AudioPlayer.play();
-    //   }
-    // );
     this.props.step("Primeros pasos");
 
     var timeoutId = setTimeout(() => this.firstInstrucction(), 100);
@@ -50,20 +44,32 @@ class BlindPath extends Component {
 
   firstInstrucction = () => {
     this.props.step("First Instrucction");
-    // AudioPlayer.prepare(
-    //   "https://s3-sa-east-1.amazonaws.com/posifi-app/firstInstruction.wav",
-    //   () => {
-    //     AudioPlayer.play();
-    //   }
-    // );
+    AudioPlayer.prepare(
+      "https://s3-sa-east-1.amazonaws.com/posifi-app/firstInstruction.wav",
+      () => {
+        AudioPlayer.play();
+      }
+    );
     var timeoutId = setTimeout(() => this.getBestLocation(), 200); //Poner lo que dura el audio
     this.setState({ timeoutId });
   };
 
   playAudio = () => {
-    AudioPlayer.prepare(this.props.data[0].audio_url, () => {
-      AudioPlayer.play();
-    });
+    if (
+      this.props.data[0].audio_url === undefined ||
+      this.props.data[0].audio_url === null
+    ) {
+      AudioPlayer.prepare(
+        "https://s3-sa-east-1.amazonaws.com/posifi-app/placeholder.wav",
+        () => {
+          AudioPlayer.play();
+        }
+      );
+    } else {
+      AudioPlayer.prepare(this.props.data[0].audio_url, () => {
+        AudioPlayer.play();
+      });
+    }
   };
 
   displayAudio = () => {

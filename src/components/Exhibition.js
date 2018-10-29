@@ -70,7 +70,9 @@ export default class Exhibition extends Component {
   };
 
   render() {
-    const coverImage = this.props.selectedExhibition.image_url;
+    const coverImage =
+      this.props.selectedExhibition.image_url ||
+      "https://s3-sa-east-1.amazonaws.com/posifi-app/placeholder.jpg";
     console.log(coverImage);
 
     return (

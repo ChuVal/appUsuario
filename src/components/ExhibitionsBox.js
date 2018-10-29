@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
-import ExhibitionHeader from "../components/ExhibitionHeader";
 import Exhibition from "../components/Exhibition";
 
 export default class ExhibitionsBox extends Component {
@@ -16,7 +15,6 @@ export default class ExhibitionsBox extends Component {
   render() {
     return (
       <View style={styles.tourBox}>
-        <ExhibitionHeader title={this.props.title} />
         <View style={styles.tourBoxTours}>
           <ScrollView horizontal={true}>{this.renderExhibitions()}</ScrollView>
         </View>

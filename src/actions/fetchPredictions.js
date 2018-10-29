@@ -23,23 +23,5 @@ export const fetchPredictions = () => {
 };
 
 var selectBest = data => {
-  return data[0].probability > 0.3 ? mapLocToTag[data[0].location] : null;
-};
-
-var mapLocToTag = {
-  uno: "location_1",
-  dos: "location_2",
-  tres: "location_3",
-  cuatro: "location_4",
-  cinco: "location_5",
-  seis: "location_6",
-  siete: "location_7",
-  ocho: "location_8",
-  nueve: "location_9",
-  diez: "location_10",
-  once: "location_11",
-  doce: "location_12",
-  trece: "location_13",
-  catorce: "location_14",
-  quince: "location_15"
+  return data[0].probability > 0.3 ? data[0].location : null;
 };

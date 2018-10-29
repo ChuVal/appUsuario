@@ -13,26 +13,33 @@ import ExhibitionsBox from "../components/ExhibitionsBox";
 
 class Exhibitions extends Component {
   checkNearZone = () => {
+    this.setState({
+      timeCount: this.state.timeCount + 1
+    });
     var bestPrediction = this.props.bestPrediction;
     this.props.sendWifiSignals();
-    this.props.fetchPredictions();
-    if (
-      bestPrediction !== this.state.actualPrediction &&
-      bestPrediction !== null
-    ) {
-      this.setState({
-        actualPrediction: bestPrediction,
-        count: 0
-      });
-    } else {
-      this.setState({
-        count: this.state.count + 1
-      });
+    if (this.state.timeCount > 4) {
+      this.props.fetchPredictions();
+      if (
+        bestPrediction !== this.state.actualPrediction &&
+        bestPrediction !== null
+      ) {
+        this.setState({
+          actualPrediction: bestPrediction,
+          count: 0
+        });
+      } else {
+        this.setState({
+          count: this.state.count + 1
+        });
+      }
     }
   };
 
   changeView = () => {
-    this.props.step("Change view");
+    this.setState({
+      timeCount: 0
+    });
     if (
       this.state.lastPrediction !== this.state.actualPrediction &&
       this.state.count >= 5 &&
@@ -46,10 +53,6 @@ class Exhibitions extends Component {
     }
   };
 
-  initialization() {
-    this.props.step("Initialization");
-  }
-
   componentWillMount() {
     this.props.sendWifiSignals();
 
@@ -60,7 +63,8 @@ class Exhibitions extends Component {
     this.props.fetchData(bestPrediction);
     this.setState({
       lastPrediction: bestPrediction,
-      actualPrediction: bestPrediction
+      actualPrediction: bestPrediction,
+      timeCount: 0
     });
     var predictionIntervalId = setInterval(() => {
       this.checkNearZone();
@@ -88,12 +92,7 @@ class Exhibitions extends Component {
       return <Spinner />;
     } else {
       // return ( tours.map(tour => <TourBox key={tour._id} tour={tour} />
-      return (
-        <ExhibitionsBox
-          exhibitions={info}
-          title={this.state.actualPrediction}
-        />
-      );
+      return <ExhibitionsBox exhibitions={info} />;
     }
   };
 
