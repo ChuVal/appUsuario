@@ -1,4 +1,4 @@
-package com.cafam;
+package com.posifi;
 
 import android.app.Application;
 

@@ -99,9 +99,9 @@ android {
     buildToolsVersion "26.0.3"
 
     defaultConfig {
-        applicationId "com.cafam"
+        applicationId "com.posifi"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         ndk {
