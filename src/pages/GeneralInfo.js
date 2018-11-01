@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Text, View, Image, StyleSheet, ScrollView } from "react-native";
-import Svg, { Path } from "react-native-svg";
 
 export default class GeneralInfo extends Component {
   render() {
@@ -8,23 +7,65 @@ export default class GeneralInfo extends Component {
       <ScrollView style={styles.infoContainer}>
         <View style={styles.parking}>
           <View style={styles.header}>
-            <Text style={styles.title}>Funcionamiento</Text>
+            <Text style={styles.title}>Aquí soñó Blanes Viale</Text>
           </View>
           <View style={styles.info}>
-            <Text style={{ marginBottom: 8 }}>Exhibicion aqui soño Blanes Viales</Text>
-            <Text style={{ marginBottom: 8 }}>
-              Simplemente usted tiene que tocar el boton de exhibiciones, y a partir de ese momento el sistema
-              reconocera en que punto del museo usted se encuentra. Con el recorrido que usted realice por el museo 
-              se le van a ir mostrando las obras que estan en la zona de al rededor y podra orpimir el boton con los auriculares
-              para asi poder ver la informacion de la obra que tambien cuenta con un audio explicativo de la misma.
+            <Text style={{ marginBottom: 2 }}>
+              En Aquí soñó Blanes Viale, Pablo Uribe, revisa y reformula a
+              través del montaje, más de un centenar de obras del acervo del
+              Museo Nacional de Artes Visuales, buscando intervenir y comentar
+              los mecanismos y los dispositivos que se ponen en juego en el
+              museo: el espacio arquitectónico, la curaduría, el acervo, la
+              museografía y la restauración.
             </Text>
-            <Text style={{ marginBottom: 8 }}>Recorrido a ciegas</Text>
-            <Text>Para el recorrido a ciegas simplemente se tiene que oprimir el boton de recorrido a ciegas,
-                y a partir de ese momento se le iran desplegando audios de las obras del recorrido a ciegas que tenga mas cercano. 
-                En ellas podra escuchar sobre las distintas obras.
+            <Text style={{ marginBottom: 2 }}>
+              La exposición propicia un diálogo con la historia de la pintura
+              uruguaya, interpelando los límites entre la cita y la apropiación,
+              el original y la copia, la autoría y la representación. Uribe
+              modifica con toda libertad las pautas museográficas en la búsqueda
+              de una nueva convergencia entre las obras (propias y ajenas) y el
+              espacio que las contiene.
+            </Text>
+            <Text style={{ marginBottom: 2 }}>
+              Cada una de las cuarenta y seis obras que componen esta exposición
+              está referenciada con un número que encuentra su correspondiente
+              en la instalación Citas citables, ubicada al ingreso de la Sala 2.
             </Text>
           </View>
+          <View style={styles.parking}>
+            <View style={styles.header}>
+              <Text style={styles.title}>
+                Funcionamiento del recorrido de la exhibición
+              </Text>
+            </View>
+            <View style={styles.info}>
+              <Text style={{ marginBottom: 8 }}>
+                Simplemente usted tiene que tocar el botón de exhibiciones, y a
+                partir de ese momento el sistema reconocerá en que punto del
+                museo usted se encuentra. Con el recorrido que usted realice por
+                el museo se le van a ir mostrando las obras que están en la zona
+                de al rededor y podrá oprimir el botón con los auriculares para
+                poder ver la información de la obra que también cuenta con un
+                audio explicativo de la misma.
+              </Text>
+            </View>
+          </View>
+          <View style={styles.parking}>
+            <View style={styles.header}>
+              <Text style={styles.title}>Recorrido a ciegas </Text>
+            </View>
+            <View style={styles.info}>
+              <Text>
+                Para el recorrido a ciegas simplemente se tiene que oprimir el
+                botón de recorrido a ciegas, y a partir de ese momento se le
+                irán desplegando audios de las obras del recorrido a ciegas que
+                tenga mas cercano. En ellas podrá escuchar sobre las distintas
+                obras.
+              </Text>
+            </View>
+          </View>
         </View>
+
         <View style={styles.admissions}>
           <View style={styles.header}>
             <Text style={styles.title}>Entrada</Text>
@@ -93,7 +134,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 3,
     borderBottomWidth: 2,
-    borderColor: "#009FB7"
+    borderColor: "#C0A600"
   },
   info: {
     flex: 0.7,
@@ -103,7 +144,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     marginLeft: 5,
-    color: "#009FB7",
+    color: "#C0A600",
     textShadowOffset: { width: 0.5, height: 0.5 },
     textShadowColor: "black",
     textShadowRadius: 1

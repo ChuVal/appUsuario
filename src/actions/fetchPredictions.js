@@ -4,10 +4,13 @@ import {
   FETCH_PREDICTIONS_ERROR,
   FETCH_PREDICTIONS_SUCCESS
 } from "./types";
+import DeviceInfo from "react-native-device-info";
+
 export const fetchPredictions = () => {
-  return dispatch => {
+  return async dispatch => {
     dispatch({ type: FETCH_PREDICTIONS_START });
-    return fetch(API + "/api/v1/location/posifi/moto")
+    var device = await DeviceInfo.getMACAddress();
+    return fetch(API + `/api/v1/location/posifi/${device}`)
       .then(res => {
         return res.json().then(data => {
           dispatch({

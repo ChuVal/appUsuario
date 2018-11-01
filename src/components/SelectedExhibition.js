@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, Image, StyleSheet } from "react-native";
+import { ScrollView, Text, View, Image, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { audioPlayerViewWidth } from "../actions";
 import AudioPlayerComponent from "./AudioPlayer";
@@ -14,7 +14,11 @@ class SelectedExhibition extends Component {
     return (
       <Image
         style={styles.selectedExhibitionImg}
-        source={{ uri: this.props.selectedExhibition.image_url }}
+        source={{
+          uri:
+            this.props.selectedExhibition.image_url ||
+            "https://s3-sa-east-1.amazonaws.com/posifi-app/placeholder.jpg"
+        }}
       />
     );
   };
@@ -34,9 +38,11 @@ class SelectedExhibition extends Component {
         </View>
 
         <View style={styles.moreInfoBox}>
-          <Text style={styles.price}>
-            {this.props.selectedExhibition.description}
-          </Text>
+          <ScrollView style={styles.infoContainer}>
+            <Text style={styles.price}>
+              {this.props.selectedExhibition.description}
+            </Text>
+          </ScrollView>
         </View>
 
         <View style={styles.selectedExhibitionAudioInfoBox}>
@@ -58,7 +64,10 @@ const styles = StyleSheet.create({
     display: "flex",
     margin: 10
   },
-
+  infoContainer: {
+    flex: 1,
+    display: "flex"
+  },
   // 3 PARTS OF CONTAINER
   imgArea: {
     flex: 0.6

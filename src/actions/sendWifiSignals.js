@@ -1,10 +1,12 @@
 import { API } from "react-native-dotenv";
 import wifi from "react-native-android-wifi";
+import DeviceInfo from "react-native-device-info";
 import { SEND_WIFI_ERROR, SEND_WIFI_SUCCESS, SEND_WIFI_START } from "./types";
 export const sendWifiSignals = () => {
-  return dispatch => {
+  return async dispatch => {
     dispatch({ type: SEND_WIFI_START });
     var wifiList = [];
+    var device = await DeviceInfo.getMACAddress();
     wifi.reScanAndLoadWifiList(
       wifiStringList => {
         wifiList = [].concat(JSON.parse(wifiStringList));
@@ -20,7 +22,7 @@ export const sendWifiSignals = () => {
           },
           body: JSON.stringify({
             s: { wifi: lis },
-            d: "moto",
+            d: device,
             f: "posifi"
           })
         })
