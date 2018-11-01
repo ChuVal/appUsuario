@@ -50,10 +50,16 @@ class Exhibitions extends Component {
         count: 0
       });
       this.props.fetchData(this.state.actualPrediction);
+      this.setState({
+        loading: false
+      });
     }
   };
 
   componentWillMount() {
+    this.setState({
+      loading: true
+    });
     this.props.sendWifiSignals();
 
     this.props.fetchPredictions();
@@ -85,7 +91,7 @@ class Exhibitions extends Component {
   }
 
   renderTourBox = () => {
-    let spin = this.props.fetching;
+    let spin = this.state.loading;
     var info = this.props.info;
     // spinner on images if passing smaller images doesn't work
     if (spin === true) {
