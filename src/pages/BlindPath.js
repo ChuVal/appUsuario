@@ -29,8 +29,6 @@ class BlindPath extends Component {
         "location_8"
       ]
     });
-    this.props.step("Primeros pasos");
-
     var timeoutId = setTimeout(() => this.firstInstrucction(), 100);
     this.setState({ timeoutId });
   }
@@ -43,14 +41,13 @@ class BlindPath extends Component {
   }
 
   firstInstrucction = () => {
-    this.props.step("First Instrucction");
     AudioPlayer.prepare(
-      "https://s3-sa-east-1.amazonaws.com/posifi-app/firstInstruction.wav",
+      "https://s3-sa-east-1.amazonaws.com/posifi-app/primera.mp3",
       () => {
         AudioPlayer.play();
       }
     );
-    var timeoutId = setTimeout(() => this.getBestLocation(), 200); //Poner lo que dura el audio
+    var timeoutId = setTimeout(() => this.getBestLocation(), 75000); //Poner lo que dura el audio
     this.setState({ timeoutId });
   };
 
@@ -72,8 +69,7 @@ class BlindPath extends Component {
     }
   };
 
-  displayAudio = () => {
-    this.props.step("Displaying Audio");
+  displayAudio = async () => {
     var id;
     if (
       this.state.locations.findIndex(
@@ -93,12 +89,14 @@ class BlindPath extends Component {
         playtimeoutId: id
       });
 
-      id = setTimeout(() => this.getBestLocation(), 6000); // Esperar el tiempo necesario
+      var duration = await AudioPlayer.getDuration();
+
+      id = setTimeout(() => this.getBestLocation(), duration);
       this.setState({
         timeoutId: id
       });
     } else {
-      id = setTimeout(() => this.getBestLocation(), 3000); // Esperar el tiempo necesario
+      id = setTimeout(() => this.getBestLocation(), 3000);
       this.setState({
         timeoutId: id
       });
@@ -106,8 +104,6 @@ class BlindPath extends Component {
   };
 
   getBestLocation = () => {
-    this.props.step("Getting best");
-    // Logica de obtener la ubicacion
     this.props.sendWifiSignals();
     this.props.fetchPredictions();
     if (this.state.actualPrediction !== this.props.bestPrediction) {
