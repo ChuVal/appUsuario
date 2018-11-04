@@ -18,7 +18,7 @@ class Exhibitions extends Component {
     });
     var bestPrediction = this.props.bestPrediction;
     this.props.sendWifiSignals();
-    if (this.state.timeCount > 4) {
+    if (this.state.timeCount > 2) {
       this.props.fetchPredictions();
       if (
         bestPrediction !== this.state.actualPrediction &&
@@ -42,7 +42,7 @@ class Exhibitions extends Component {
     });
     if (
       this.state.lastPrediction !== this.state.actualPrediction &&
-      this.state.count >= 3 &&
+      this.state.count >= 2 &&
       this.state.lastPrediction !== null
     ) {
       this.setState({
@@ -74,7 +74,7 @@ class Exhibitions extends Component {
     });
     var predictionIntervalId = setInterval(() => {
       this.checkNearZone();
-    }, 250);
+    }, 500);
     this.setState({
       predictionIntervalId
     });

@@ -119,7 +119,7 @@ class BlindPath extends Component {
         count: this.state.count + 1
       });
     }
-    if (this.state.count === 5) {
+    if (this.state.count === 3) {
       this.displayAudio();
     } else {
       var btimeoutId = setTimeout(() => this.getBestLocation(), 500);
