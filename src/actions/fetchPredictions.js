@@ -9,7 +9,8 @@ import DeviceInfo from "react-native-device-info";
 export const fetchPredictions = () => {
   return async dispatch => {
     dispatch({ type: FETCH_PREDICTIONS_START });
-    var device = await DeviceInfo.getMACAddress();
+    var mac = await DeviceInfo.getMACAddress();
+    var device = mac.replace(/:/g, "").toLowerCase();
     return fetch(API + `/api/v1/location/posifi/${device}`)
       .then(res => {
         return res.json().then(data => {

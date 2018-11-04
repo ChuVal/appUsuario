@@ -5,8 +5,17 @@ import { YellowBox } from "react-native";
 import configureStore from "./configureStore.js";
 import configureReactotron from "./ReactotronConfig";
 import { PermissionsAndroid } from "react-native";
+import clone from "lodash/clone.js";
 
 YellowBox.ignoreWarnings(["Warning: isMounted(...) is deprecated"]);
+
+YellowBox.ignoreWarnings(["Setting a timer"]);
+const _console = clone(console);
+console.warn = message => {
+  if (message.indexOf("Setting a timer") <= -1) {
+    _console.warn(message);
+  }
+};
 
 var idleState = {};
 configureReactotron();
@@ -36,7 +45,7 @@ class App extends Component {
   componentDidMount() {
     this.askForUserPermissions();
   }
-  
+
   render() {
     return (
       <Provider store={store}>

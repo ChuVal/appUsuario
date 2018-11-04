@@ -47,14 +47,18 @@ class BlindPath extends Component {
         AudioPlayer.play();
       }
     );
-    var timeoutId = setTimeout(() => this.getBestLocation(), 75000); //Poner lo que dura el audio
+    this.setState({
+      audioName: "Bienvenida"
+    });
+    var timeoutId = setTimeout(() => this.getBestLocation(), 72000); //Poner lo que dura el audio
     this.setState({ timeoutId });
   };
 
   playAudio = () => {
     if (
       this.props.data[0].audio_url === undefined ||
-      this.props.data[0].audio_url === null
+      this.props.data[0].audio_url === null ||
+      this.props.data[0] === undefined
     ) {
       AudioPlayer.prepare(
         "https://s3-sa-east-1.amazonaws.com/posifi-app/placeholder.wav",
@@ -65,6 +69,9 @@ class BlindPath extends Component {
     } else {
       AudioPlayer.prepare(this.props.data[0].audio_url, () => {
         AudioPlayer.play();
+      });
+      this.setState({
+        audioName: this.props.data[0].location_name
       });
     }
   };
@@ -81,17 +88,13 @@ class BlindPath extends Component {
           id => id !== this.state.actualPrediction
         )
       });
-      this.props.step(this.state.actualPrediction);
       this.props.fetchAudioBlindPath(this.state.actualPrediction);
 
       id = setTimeout(() => this.playAudio(), 3000); // Esperar el tiempo necesario
       this.setState({
         playtimeoutId: id
       });
-
-      var duration = await AudioPlayer.getDuration();
-
-      id = setTimeout(() => this.getBestLocation(), duration);
+      id = setTimeout(() => this.getBestLocation(), 120000);
       this.setState({
         timeoutId: id
       });
@@ -116,7 +119,7 @@ class BlindPath extends Component {
         count: this.state.count + 1
       });
     }
-    if (this.state.count === 3) {
+    if (this.state.count === 5) {
       this.displayAudio();
     } else {
       var btimeoutId = setTimeout(() => this.getBestLocation(), 500);
@@ -133,7 +136,7 @@ class BlindPath extends Component {
           {"Bienvenido al recorrido a ciegas!"}
         </Text>
         <Text style={styles.text2Style}>
-          {this.state.actualPrediction + "|" + this.state.count}
+          {"Usted esta escuchando audio de " + this.state.audioName}
         </Text>
       </View>
     );

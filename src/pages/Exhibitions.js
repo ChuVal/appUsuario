@@ -42,7 +42,7 @@ class Exhibitions extends Component {
     });
     if (
       this.state.lastPrediction !== this.state.actualPrediction &&
-      this.state.count >= 5 &&
+      this.state.count >= 3 &&
       this.state.lastPrediction !== null
     ) {
       this.setState({

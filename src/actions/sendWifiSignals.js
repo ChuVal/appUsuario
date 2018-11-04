@@ -6,7 +6,8 @@ export const sendWifiSignals = () => {
   return async dispatch => {
     dispatch({ type: SEND_WIFI_START });
     var wifiList = [];
-    var device = await DeviceInfo.getMACAddress();
+    var mac = await DeviceInfo.getMACAddress();
+    var device = mac.replace(/:/g, "").toLowerCase();
     wifi.reScanAndLoadWifiList(
       wifiStringList => {
         wifiList = [].concat(JSON.parse(wifiStringList));
