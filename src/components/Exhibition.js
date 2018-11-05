@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: "rgba(255, 51, 51, .7)"
+    backgroundColor: "rgba(29, 29, 29, .7)"
   },
   push: {
     flex: 0.8

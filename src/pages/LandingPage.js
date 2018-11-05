@@ -10,7 +10,7 @@ export default class LandingPage extends Component {
     render() {
         return (
             <ImageBackground
-                source={require('../assets/img/mnav.jpg')}
+                source={require('../assets/img/mnav.png')}
                 style={styles.backgroundImage}>
                 <View style={styles.container}>
                     <View style={styles.title}>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#fff'
+        backgroundColor: '#9e9e9e'
     },
     enterText: {
         fontSize: 24,

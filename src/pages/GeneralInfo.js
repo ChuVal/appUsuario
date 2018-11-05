@@ -10,7 +10,7 @@ export default class GeneralInfo extends Component {
             <Text style={styles.title}>Aquí soñó Blanes Viale</Text>
           </View>
           <View style={styles.info}>
-            <Text style={{ marginBottom: 2 }}>
+            <Text style={{ marginBottom: 2, fontSize: 16 }}>
               En Aquí soñó Blanes Viale, Pablo Uribe, revisa y reformula a
               través del montaje, más de un centenar de obras del acervo del
               Museo Nacional de Artes Visuales, buscando intervenir y comentar
@@ -18,7 +18,7 @@ export default class GeneralInfo extends Component {
               museo: el espacio arquitectónico, la curaduría, el acervo, la
               museografía y la restauración.
             </Text>
-            <Text style={{ marginBottom: 2 }}>
+            <Text style={{ marginBottom: 2, fontSize: 16 }}>
               La exposición propicia un diálogo con la historia de la pintura
               uruguaya, interpelando los límites entre la cita y la apropiación,
               el original y la copia, la autoría y la representación. Uribe
@@ -26,7 +26,7 @@ export default class GeneralInfo extends Component {
               de una nueva convergencia entre las obras (propias y ajenas) y el
               espacio que las contiene.
             </Text>
-            <Text style={{ marginBottom: 2 }}>
+            <Text style={{ marginBottom: 2, fontSize: 16 }}>
               Cada una de las cuarenta y seis obras que componen esta exposición
               está referenciada con un número que encuentra su correspondiente
               en la instalación Citas citables, ubicada al ingreso de la Sala 2.
@@ -39,7 +39,7 @@ export default class GeneralInfo extends Component {
               </Text>
             </View>
             <View style={styles.info}>
-              <Text style={{ marginBottom: 8 }}>
+              <Text style={{ marginBottom: 8 }} style={styles.text}>
                 Simplemente usted tiene que tocar el botón de exhibiciones, y a
                 partir de ese momento el sistema reconocerá en que punto del
                 museo usted se encuentra. Con el recorrido que usted realice por
@@ -55,7 +55,7 @@ export default class GeneralInfo extends Component {
               <Text style={styles.title}>Recorrido a ciegas </Text>
             </View>
             <View style={styles.info}>
-              <Text>
+              <Text style={styles.text}>
                 Para el recorrido a ciegas simplemente se tiene que oprimir el
                 botón de recorrido a ciegas, y a partir de ese momento se le
                 irán desplegando audios de las obras del recorrido a ciegas que
@@ -71,7 +71,9 @@ export default class GeneralInfo extends Component {
             <Text style={styles.title}>Entrada</Text>
           </View>
           <View style={styles.info}>
-            <Text>La entrada es completamente gratuita</Text>
+            <Text style={styles.text}>
+              La entrada es completamente gratuita
+            </Text>
           </View>
         </View>
 
@@ -80,7 +82,9 @@ export default class GeneralInfo extends Component {
             <Text style={styles.title}>Horas de Apertura</Text>
           </View>
           <View style={styles.info}>
-            <Text>Martes a domingo de 13:00 a 20:00 horas</Text>
+            <Text style={styles.text}>
+              Martes a domingo de 13:00 a 20:00 horas
+            </Text>
           </View>
         </View>
 
@@ -121,6 +125,9 @@ const styles = StyleSheet.create({
     borderTopColor: "#009FB7",
     height: 300
   },
+  text: {
+    fontSize: 16
+  },
   mapImg: {
     flex: 1,
     height: null,
@@ -134,7 +141,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 3,
     borderBottomWidth: 2,
-    borderColor: "#C0A600"
+    borderColor: "#1d1d1d"
   },
   info: {
     flex: 0.7,
@@ -144,7 +151,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     marginLeft: 5,
-    color: "#C0A600",
+    color: "#1d1d1d",
     textShadowOffset: { width: 0.5, height: 0.5 },
     textShadowColor: "black",
     textShadowRadius: 1

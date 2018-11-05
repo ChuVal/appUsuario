@@ -25,7 +25,7 @@ const RouterComponent = () => {
             component={Exhibitions}
             hideNavBar={false}
             title={"Exhibicion"}
-            navigationBarStyle={{ backgroundColor: "#B33D3B" }}
+            navigationBarStyle={{ backgroundColor: "#1d1d1d" }}
             backTitle=" "
           />
           <Scene
@@ -33,7 +33,7 @@ const RouterComponent = () => {
             component={GeneralInfo}
             hideNavBar={false}
             title={"Informacion General"}
-            navigationBarStyle={{ backgroundColor: "#dfc12a" }}
+            navigationBarStyle={{ backgroundColor: "#565656" }}
             backTitle=" "
           />
           <Scene
@@ -41,7 +41,7 @@ const RouterComponent = () => {
             component={BlindPath}
             hideNavBar={false}
             title={"Recorrido a ciegas"}
-            navigationBarStyle={{ backgroundColor: "#3B7FB3" }}
+            navigationBarStyle={{ backgroundColor: "#9e9e9e" }}
             backTitle=" "
           />
           <Scene

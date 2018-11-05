@@ -14,80 +14,77 @@ import ExhibitionsBox from "../components/ExhibitionsBox";
 class Exhibitions extends Component {
   checkNearZone = () => {
     this.setState({
-      timeCount: this.state.timeCount + 1
-    });
-    var bestPrediction = this.props.bestPrediction;
-    this.props.sendWifiSignals();
-    if (this.state.timeCount > 2) {
-      this.props.fetchPredictions();
-      if (
-        bestPrediction !== this.state.actualPrediction &&
-        bestPrediction !== null
-      ) {
-        this.setState({
-          actualPrediction: bestPrediction,
-          count: 0
-        });
-      } else {
-        this.setState({
-          count: this.state.count + 1
-        });
-      }
-    }
-  };
-
-  changeView = () => {
-    this.setState({
-      timeCount: 0
-    });
-    if (
-      this.state.lastPrediction !== this.state.actualPrediction &&
-      this.state.count >= 2 &&
-      this.state.lastPrediction !== null
-    ) {
-      this.setState({
-        lastPrediction: this.state.actualPrediction,
-        count: 0
-      });
-      this.props.fetchData(this.state.actualPrediction);
-      this.setState({
-        loading: false
-      });
-    }
-  };
-
-  componentWillMount() {
-    this.setState({
-      loading: true
+      loading: false
     });
     this.props.sendWifiSignals();
 
     this.props.fetchPredictions();
 
-    var bestPrediction = this.props.bestPrediction;
+    // Enqueue the new element
+    var next = this.state.head + 1;
 
-    this.props.fetchData(bestPrediction);
+    if (next >= this.state.capacity) next = 0;
+
+    var buffer = this.state.buffer;
+
+    var prediction = this.props.bestPrediction;
+
+    buffer[this.state.head] = prediction;
+
     this.setState({
-      lastPrediction: bestPrediction,
-      actualPrediction: bestPrediction,
-      timeCount: 0
+      buffer,
+      head: next
     });
+
+    var actualPrediction = this.getBest(buffer);
+
+    this.props.step(actualPrediction);
+    
+    if (actualPrediction !== this.state.previousPrediction) {
+      this.props.fetchData(actualPrediction);
+      this.setState({ previousPrediction: actualPrediction });
+    }
+  };
+
+  getBest = array => {
+    let result,
+      best = -1,
+      lookup = {};
+    for (let i = 0; i < array.length; i++) {
+      if (lookup[array[i]] == undefined) {
+        lookup[array[i]] = 0;
+      }
+      lookup[array[i]]++;
+      if (lookup[array[i]] > best) {
+        best = lookup[array[i]];
+        result = array[i];
+      }
+    }
+    return result;
+  };
+
+  componentWillMount() {
+    this.setState({
+      loading: true,
+      buffer: new Array(10),
+      capacity: 10,
+      head: 0,
+      previousPrediction: ""
+    });
+    this.props.sendWifiSignals();
+
+    this.props.fetchPredictions();
+
     var predictionIntervalId = setInterval(() => {
       this.checkNearZone();
-    }, 500);
+    }, 1000);
+
     this.setState({
       predictionIntervalId
-    });
-    var viewIntervalId = setInterval(() => {
-      this.changeView();
-    }, 5000);
-    this.setState({
-      viewIntervalId
     });
   }
   componentWillUnmount() {
     clearInterval(this.state.predictionIntervalId);
-    clearInterval(this.state.viewIntervalId);
   }
 
   renderTourBox = () => {
@@ -148,5 +145,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchData, fetchTourData, fetchPredictions, sendWifiSignals, step }
+  { fetchData, fetchPredictions, sendWifiSignals, step }
 )(Exhibitions);

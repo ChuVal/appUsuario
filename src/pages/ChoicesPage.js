@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#B33D3B",
+    backgroundColor: "#1d1d1d",
     marginBottom: 20
   },
   buttonStyle1: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#dfc12a",
+    backgroundColor: "#565656",
     marginBottom: 20
   },
   buttonStyle2: {
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#3B7FB3",
+    backgroundColor: "#9e9e9e",
     marginBottom: 20
   },
   textContainer: {
