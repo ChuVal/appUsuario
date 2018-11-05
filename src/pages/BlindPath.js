@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import {
   fetchAudioBlindPath,
   sendWifiSignals,
@@ -71,7 +71,8 @@ class BlindPath extends Component {
         AudioPlayer.play();
       });
       this.setState({
-        audioName: this.props.data[0].location_name
+        audioName: this.props.data[0].location_name,
+        image: this.props.data[0].image_url
       });
     }
   };
@@ -138,6 +139,14 @@ class BlindPath extends Component {
         <Text style={styles.text2Style}>
           {"Usted esta escuchando audio de " + this.state.audioName}
         </Text>
+        <Image
+          style={styles.img}
+          source={{
+            uri:
+              this.state.image ||
+              "https://s3-sa-east-1.amazonaws.com/posifi-app/placeholder.jpg"
+          }}
+        />
       </View>
     );
   }
@@ -152,11 +161,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center",
-    marginTop: "50%"
+    marginTop: "10%"
   },
   text2Style: {
     fontSize: 18,
+    fontWeight: "bold",
     textAlign: "center"
+  },
+  img: {
+    flex: 1,
+    height: null,
+    width: null,
+    margin: 5
   }
 });
 

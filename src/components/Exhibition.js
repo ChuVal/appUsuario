@@ -137,10 +137,11 @@ const styles = StyleSheet.create({
     borderColor: "#009FB7",
     marginBottom: 0,
     padding: 5,
+    paddingTop: 10,
     width: 150,
     height: 5,
     marginBottom: 5,
-    marginTop: 5
+    marginTop: 10
   },
   startBtnDisabled: {
     flex: 1,
@@ -156,6 +157,7 @@ const styles = StyleSheet.create({
   imgText: {
     margin: 0,
     color: "white",
+    textAlign: "center",
     fontSize: 18,
     letterSpacing: 2,
     textShadowOffset: { width: 2, height: 2 },

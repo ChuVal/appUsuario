@@ -39,7 +39,7 @@ class Exhibitions extends Component {
     var actualPrediction = this.getBest(buffer);
 
     this.props.step(actualPrediction);
-    
+
     if (actualPrediction !== this.state.previousPrediction) {
       this.props.fetchData(actualPrediction);
       this.setState({ previousPrediction: actualPrediction });
@@ -88,7 +88,7 @@ class Exhibitions extends Component {
   }
 
   renderTourBox = () => {
-    let spin = this.state.loading;
+    let spin = this.props.loading;
     var info = this.props.info;
     // spinner on images if passing smaller images doesn't work
     if (spin === true) {
@@ -139,7 +139,8 @@ const mapStateToProps = state => {
     error: state.data.error,
     bestPrediction: state.predictions.bestPrediction,
     data: state.data.data,
-    info: state.data.info
+    info: state.data.info,
+    loading: state.data.loading
   };
 };
 
