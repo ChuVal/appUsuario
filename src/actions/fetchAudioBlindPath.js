@@ -11,7 +11,7 @@ export const fetchAudioBlindPath = id => dispatch => {
     .then(res => {
       return res.json().then(data => {
         dispatch({
-          type: SEND_PARTIAL_INFO_SUCCESS,
+          type: `SEND_BLIND_INFO_SUCCES`,
           payload: data.filter(d => d.is_blind_path === true)
         });
       });

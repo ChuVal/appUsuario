@@ -27,5 +27,5 @@ export const fetchPredictions = () => {
 };
 
 var selectBest = data => {
-  return data[0].probability > 0.3 ? data[0].location : null;
+  return data[0].location;
 };

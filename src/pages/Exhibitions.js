@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  fetchData,
-  fetchTourData,
-  fetchPredictions,
-  sendWifiSignals,
-  step
-} from "../actions";
+import { fetchData, fetchPredictions, sendWifiSignals, step } from "../actions";
 import { View, StyleSheet } from "react-native";
 import Spinner from "../components/Spinner";
 import ExhibitionsBox from "../components/ExhibitionsBox";

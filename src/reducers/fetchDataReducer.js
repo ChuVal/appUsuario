@@ -17,6 +17,8 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loading: true
       };
+    case `SEND_BLIND_INFO_SUCCES`:
+      return { ...state, infoBlind: action.payload };
     case SEND_PARTIAL_INFO_SUCCESS:
       return { ...state, info: action.payload, loading: false };
     default:

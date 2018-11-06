@@ -29,7 +29,8 @@ class BlindPath extends Component {
         "location_8"
       ]
     });
-    var timeoutId = setTimeout(() => this.firstInstrucction(), 100);
+    this.props.sendWifiSignals();
+    var timeoutId = setTimeout(() => this.firstInstrucction(), 120);
     this.setState({ timeoutId });
   }
 
@@ -50,6 +51,7 @@ class BlindPath extends Component {
     this.setState({
       audioName: "Bienvenida"
     });
+    this.props.sendWifiSignals();
     var timeoutId = setTimeout(() => this.getBestLocation(), 72000); //Poner lo que dura el audio
     this.setState({ timeoutId });
   };
@@ -75,6 +77,13 @@ class BlindPath extends Component {
         image: this.props.data[0].image_url
       });
     }
+    id = setTimeout(
+      () => this.getBestLocation(),
+      locationsToDuration[this.state.actualPrediction]
+    );
+    this.setState({
+      timeoutId: id
+    });
   };
 
   displayAudio = async () => {
@@ -91,13 +100,9 @@ class BlindPath extends Component {
       });
       this.props.fetchAudioBlindPath(this.state.actualPrediction);
 
-      id = setTimeout(() => this.playAudio(), 3000); // Esperar el tiempo necesario
+      id = setTimeout(() => this.playAudio(), 5000); // Esperar el tiempo necesario
       this.setState({
         playtimeoutId: id
-      });
-      id = setTimeout(() => this.getBestLocation(), 120000);
-      this.setState({
-        timeoutId: id
       });
     } else {
       id = setTimeout(() => this.getBestLocation(), 3000);
@@ -123,7 +128,7 @@ class BlindPath extends Component {
     if (this.state.count === 3) {
       this.displayAudio();
     } else {
-      var btimeoutId = setTimeout(() => this.getBestLocation(), 500);
+      var btimeoutId = setTimeout(() => this.getBestLocation(), 1000);
       this.setState({
         btimeoutId
       });
@@ -152,6 +157,17 @@ class BlindPath extends Component {
   }
 }
 
+var locationsToDuration = {
+  location_1: 78000,
+  loaction_2: 105000,
+  location_3: 70000,
+  location_4: 60000,
+  location_5: 120000,
+  location_6: 100000,
+  location_7: 86000,
+  location_8: 100000
+};
+
 const styles = StyleSheet.create({
   viewStyle: {
     flex: 1,
@@ -177,7 +193,7 @@ const styles = StyleSheet.create({
 });
 
 var mapStateToProps = state => ({
-  data: state.data.info,
+  data: state.data.infoBlind,
   bestPrediction: state.predictions.bestPrediction
 });
 
