@@ -56,11 +56,11 @@ export default class GeneralInfo extends Component {
             </View>
             <View style={styles.info}>
               <Text style={styles.text}>
-                Para el recorrido a ciegas simplemente se tiene que oprimir el
-                botón de recorrido a ciegas, y a partir de ese momento se le
-                irán desplegando audios de las obras del recorrido a ciegas que
-                tenga mas cercano. En ellas podrá escuchar sobre las distintas
-                obras.
+                Simplemente se tiene que oprimir el botón de recorrido a ciegas,
+                y a partir de ese momento se le irán desplegando audios de las
+                obras del recorrido que tenga mas cercano. En ellas podrá
+                escuchar sobre las distintas obras y profundizar sobre la
+                experiencia de la muesta.
               </Text>
             </View>
           </View>

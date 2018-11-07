@@ -15,6 +15,7 @@ class Exhibitions extends Component {
     this.props.fetchPredictions();
 
     // Enqueue the new element
+
     var next = this.state.head + 1;
 
     if (next >= this.state.capacity) next = 0;
@@ -41,20 +42,30 @@ class Exhibitions extends Component {
   };
 
   getBest = array => {
-    let result,
-      best = -1,
-      lookup = {};
-    for (let i = 0; i < array.length; i++) {
-      if (lookup[array[i]] == undefined) {
-        lookup[array[i]] = 0;
+    var result = {};
+    array.map(locationArray => {
+      if (locationArray !== undefined && array.map !== undefined) {
+        return locationArray.map(elem => {
+          if (result[elem.location] !== undefined) {
+            result[elem.location] = result[elem.location] + elem.probability;
+          } else {
+            result[elem.location] = elem.probability;
+          }
+        });
       }
-      lookup[array[i]]++;
-      if (lookup[array[i]] > best) {
-        best = lookup[array[i]];
-        result = array[i];
+    });
+
+    var bestLocation = {
+      location: null,
+      probability: 0
+    };
+    Object.keys(result).map(key => {
+      if (result[key] > bestLocation.probability) {
+        bestLocation.location = key;
+        bestLocation.probability = result[key];
       }
-    }
-    return result;
+    });
+    return bestLocation.location;
   };
 
   componentWillMount() {
@@ -65,6 +76,7 @@ class Exhibitions extends Component {
       head: 0,
       previousPrediction: ""
     });
+
     this.props.sendWifiSignals();
 
     this.props.fetchPredictions();

@@ -16,7 +16,9 @@ export const fetchPredictions = () => {
         return res.json().then(data => {
           dispatch({
             type: FETCH_PREDICTIONS_SUCCESS,
-            payload: selectBest(data.analysis.guesses)
+            payload: data.analysis.guesses.filter(
+              elem => elem.probability > 0.1
+            )
           });
         });
       })
@@ -24,8 +26,4 @@ export const fetchPredictions = () => {
         dispatch({ type: FETCH_PREDICTIONS_ERROR, payload: err });
       });
   };
-};
-
-var selectBest = data => {
-  return data[0].location;
 };

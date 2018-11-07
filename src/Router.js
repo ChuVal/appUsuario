@@ -24,7 +24,7 @@ const RouterComponent = () => {
             key="tours"
             component={Exhibitions}
             hideNavBar={false}
-            title={"Exhibicion"}
+            title={"Exhibición"}
             navigationBarStyle={{ backgroundColor: "#1d1d1d" }}
             backTitle=" "
           />
@@ -32,7 +32,7 @@ const RouterComponent = () => {
             key="generalInfo"
             component={GeneralInfo}
             hideNavBar={false}
-            title={"Informacion General"}
+            title={"Información General"}
             navigationBarStyle={{ backgroundColor: "#565656" }}
             backTitle=" "
           />
@@ -49,7 +49,7 @@ const RouterComponent = () => {
             component={Exhibition}
             hideNavBar={false}
             title={"Tour de MNAV"}
-            navigationBarStyle={{ backgroundColor: "#F4A93F" }}
+            navigationBarStyle={{ backgroundColor: "#1d1d1d" }}
           />
         </Scene>
       </Lightbox>
