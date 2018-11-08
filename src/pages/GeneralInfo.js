@@ -40,13 +40,12 @@ export default class GeneralInfo extends Component {
             </View>
             <View style={styles.info}>
               <Text style={{ marginBottom: 8 }} style={styles.text}>
-                Simplemente usted tiene que tocar el botón de exhibiciones, y a
-                partir de ese momento el sistema reconocerá en que punto del
-                museo usted se encuentra. Con el recorrido que usted realice por
-                el museo se le van a ir mostrando las obras que están en la zona
-                de al rededor y podrá oprimir el botón con los auriculares para
-                poder ver la información de la obra que también cuenta con un
-                audio explicativo de la misma.
+                Luego de entrar a la pantalla de exhibición el sistema comenzara
+                a reconocer en que punto del museo usted se encuentra. Acorde al
+                recorrido que usted realice se le iran mostrando las obras que
+                están en la zona cicundante. Oprimiendo el botón con los
+                auriculares podrá acceder a la información de la obra, contando
+                con un audio explicativo de la misma.
               </Text>
             </View>
           </View>
@@ -56,13 +55,27 @@ export default class GeneralInfo extends Component {
             </View>
             <View style={styles.info}>
               <Text style={styles.text}>
-                Simplemente se tiene que oprimir el botón de recorrido a ciegas,
-                y a partir de ese momento se le irán desplegando audios de las
-                obras del recorrido que tenga mas cercano. En ellas podrá
-                escuchar sobre las distintas obras y profundizar sobre la
-                experiencia de la muesta.
+                Luego de oprimir el botón de recorrido a ciegas, se comienza a
+                reproducir un audio introductorio sobre la muestra. Una vez
+                finalizado este primer audio, se comenzará a localizar al
+                usuario. A medida que se aproxime a alguna de ocho obras
+                distribuidas en el MNAV, la app reproducirá el audio relevante a
+                esta obra.
               </Text>
             </View>
+          </View>
+        </View>
+
+        <View style={styles.admissions}>
+          <View style={styles.header}>
+            <Text style={styles.title}>Compatibilidad de dispositivos</Text>
+          </View>
+          <View style={styles.info}>
+            <Text style={styles.text}>
+              La aplicación se encuentra solo disponible para dispositivos
+              Android. Para tablets o móviles que no cuenten con Wi-Fi de doble
+              banda, la localización se verá negativamente afectada.
+            </Text>
           </View>
         </View>
 

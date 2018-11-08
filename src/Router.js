@@ -48,7 +48,7 @@ const RouterComponent = () => {
             key="tour"
             component={Exhibition}
             hideNavBar={false}
-            title={"Tour de MNAV"}
+            title={"Obra"}
             navigationBarStyle={{ backgroundColor: "#1d1d1d" }}
           />
         </Scene>

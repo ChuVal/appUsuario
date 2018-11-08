@@ -44,7 +44,7 @@ class Exhibitions extends Component {
   getBest = array => {
     var result = {};
     array.map(locationArray => {
-      if (locationArray !== undefined && array.map !== undefined) {
+      if (locationArray !== undefined && locationArray.map !== undefined) {
         return locationArray.map(elem => {
           if (result[elem.location] !== undefined) {
             result[elem.location] = result[elem.location] + elem.probability;

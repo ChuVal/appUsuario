@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Image } from "react-native";
 import {
   fetchAudioBlindPath,
   sendWifiSignals,
-  fetchPredictions,
+  fetchPredictionsBlind,
   step
 } from "../actions";
 import { connect } from "react-redux";
@@ -114,7 +114,7 @@ class BlindPath extends Component {
 
   getBestLocation = () => {
     this.props.sendWifiSignals();
-    this.props.fetchPredictions();
+    this.props.fetchPredictionsBlind();
     if (this.state.actualPrediction !== this.props.bestPrediction) {
       this.setState({
         actualPrediction: this.props.bestPrediction,
@@ -199,5 +199,5 @@ var mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchAudioBlindPath, sendWifiSignals, fetchPredictions, step }
+  { fetchAudioBlindPath, sendWifiSignals, fetchPredictionsBlind, step }
 )(BlindPath);
