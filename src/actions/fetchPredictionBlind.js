@@ -10,7 +10,7 @@ import cuid from "cuid";
 export const fetchPredictionsBlind = () => {
   return async dispatch => {
     dispatch({ type: FETCH_PREDICTIONS_START });
-    const device = await AsyncStorage.getItem("id");
+    var device = await AsyncStorage.getItem("id");
     if (value === null) {
       device = cuid();
       await AsyncStorage.setItem("id", device);
