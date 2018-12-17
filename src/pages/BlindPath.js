@@ -52,7 +52,7 @@ class BlindPath extends Component {
       audioName: "Bienvenida"
     });
     this.props.sendWifiSignals();
-    var timeoutId = setTimeout(() => this.getBestLocation(), 72000); //Poner lo que dura el audio
+    var timeoutId = setTimeout(() => this.getBestLocation(), 35000); //Poner lo que dura el audio
     this.setState({ timeoutId });
   };
 
@@ -142,7 +142,7 @@ class BlindPath extends Component {
           {"Bienvenido al recorrido a ciegas!"}
         </Text>
         <Text style={styles.text2Style}>
-          {"Usted esta escuchando audio de " + this.state.audioName}
+          {"Usted está escuchando audio de " + this.state.audioName}
         </Text>
         <Image
           style={styles.img}

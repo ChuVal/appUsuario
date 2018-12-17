@@ -11,8 +11,8 @@ export default class GeneralInfo extends Component {
           </View>
           <View style={styles.info}>
             <Text style={{ marginBottom: 2, fontSize: 16 }}>
-              En Aquí soñó Blanes Viale, Pablo Uribe, revisa y reformula a
-              través del montaje, más de un centenar de obras del acervo del
+              En Aquí soñó Blanes Viale, Pablo Uribe revisa y reformula a
+              través del montaje más de un centenar de obras del acervo del
               Museo Nacional de Artes Visuales, buscando intervenir y comentar
               los mecanismos y los dispositivos que se ponen en juego en el
               museo: el espacio arquitectónico, la curaduría, el acervo, la
